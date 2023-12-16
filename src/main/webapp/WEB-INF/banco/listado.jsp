@@ -13,7 +13,9 @@
 <h1 class="text-center">Gestibanko</h1>
 <table>
     <tr class="text-center"><th>Codigo</th><th>Nombre</th><th>Direccion</th><th>Telefono</th><th>Fecha de Nacimiento</th>
-    <th><a href="http://localhost:8080/actividad2_9_war_exploded/ListarClienteServlet">Volver</a></th></tr>
+    <th><form action="http://localhost:8080/actividad2_9_war_exploded/">
+        <input type="submit" value="Salir" class="btn btn-primary ">
+    </form></th></tr>
 
     <%//listar todos
         List<Cliente> listado = (List<Cliente>) request.getAttribute("listado");

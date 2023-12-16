@@ -26,7 +26,14 @@
         rs = s.executeQuery ("SELECT * FROM usuario");
 %>
 <table class="container">
-    <tr><th class="text-center">Usuario</th><th class="text-center">Contraseña</th><th class="text-center"><a href="formularioUsuario.jsp" >Añadir Usuario</a></th></tr>
+    <tr><th class="text-center">Usuario</th><th class="text-center">Contraseña</th>
+        <th class="text-center"><form action="formularioUsuario.jsp">
+            <input type="submit" value="Añadir Usuario" class="btn btn-primary">
+        </form></th>
+        <th class="text-center"><form action="validation.jsp">
+            <input type="submit" value="Volver a Usuarios" class="btn btn-primary">
+        </form></th>
+    </tr>
     <%
         //imprimir
         while (rs.next()) {
