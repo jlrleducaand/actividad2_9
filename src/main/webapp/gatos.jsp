@@ -4,26 +4,10 @@
 <head>
     <title>Gatos</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-
+    <link rel="stylesheet" href="gatos.css">
 </head>
 <body>
-<style>
-    td{
-        width: 50px;
-    }
-    tr{
-        height: 50px;
-    }
-    img{
-        width: 50px;
-        height: 50px;
-    }
-    table{
-        display: flex;
-        justify-content: center;
-    }
-</style>
+
 <%
     try {
         //obtener la altura
