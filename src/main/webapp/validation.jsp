@@ -6,47 +6,56 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <title>Control de acceso2</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="estilos.css">
     <title>Acceso</title>
 </head>
 <body class="text-center">
 <%
-    /*obtener los parametros*/
+    //Obtener los parametros
     String usuario = request.getParameter("usuario");
     String password = request.getParameter("password");
-    //comprobar que no son nulos o vacios
+
+    //Comprobar que no son nulos o vacios
     if (usuario != null && password != null && !usuario.isBlank() && !password.isBlank()) {
         try {
 
-            //conectar
+            //Conectar con base de datos
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/ejercicio_2_9", "root", "1234");
-            Statement s = conexion.createStatement();
-            //listar
-            ResultSet listado = s.executeQuery("SELECT * FROM usuario");
-            //buscar
-            boolean encontrado = false;
+            Statement statement = conexion.createStatement();
+
+            //Listar resultado de la querry
+            ResultSet listado = statement.executeQuery("SELECT * FROM usuario");
+
+            //Buscar el usuario en el listado
+            boolean encontradoUsuario = false;
             while (listado.next()) {
                 if (usuario.equals(listado.getString("usuario"))) {
                     if (!password.equals(listado.getString("contrasena"))) {
-                        //contraseña incorrecta
-                        session.setAttribute("error", "contraseña incorrecto");
+                        //Error en la contraseña
+                        session.setAttribute("error", "contraseña incorrecta");
                     }
-                    encontrado = true;
-                    //ya que usuario hay solo uno, una vez encontrado ya se puede salir, tambien se puede poner un && !encontrado en el while
-                    break;
-                }
+                        encontradoUsuario = true;
+                        //ya que usuario hay solo uno, una vez encontrado ya se puede salir,
+                        // tambien se puede poner un && !encontrado en el while
+                        break;
+                    }
+
             }
-            //si no encuentra envia el error
-            if (!encontrado) {
+            //Error en el usuario
+            if (!encontradoUsuario) {
                 session.setAttribute("error", "usuario incorrecto");
             }
+        //Error al conectar con la  BBDD
         } catch (Exception e) {
             session.setAttribute("error", e);
             e.printStackTrace();
         }
+    // Error en en campos de formulario enviado
     } else {
-        session.setAttribute("error", "Campo vacío");
+        session.setAttribute("error", "Campo vacío o null");
     }
 
     if (session.getAttribute("error") != null) {
@@ -78,5 +87,8 @@
         }
     }
 %>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

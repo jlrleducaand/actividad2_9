@@ -3,7 +3,6 @@ package model;
 import java.util.Objects;
 
 public class Cliente {
-
     private int cliente_id;
     private String nombre_completo;
     private String direccion;
