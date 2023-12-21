@@ -57,10 +57,10 @@
     } else {
         session.setAttribute("error", "Campo vacío o null");
     }
-
+    //Si hay algun error, osea que no hay ningun usuario y contraseñas correctas
     if (session.getAttribute("error") != null) {
-        //Si hay algun error, osea que no hay ningun usuario y contraseñas correctas
         response.sendRedirect("index.jsp");
+
     } else {
         //si el usuario es admin
         if (usuario.equals("admin")) {
@@ -69,10 +69,17 @@
 <p>Acceso concedido a las áreas de gestion de Usuarios y de Clientes</p>
 
 <form action="admin.jsp">
+    <input id="usuario" type="text" name="usuario" value="<%= request.getParameter("usuario")%>" hidden>
+    <input id="password" type="password" name="password" value="<%= request.getParameter("password")%>" hidden>
     <input type="submit" value="Gestion de Usuarios" class="btn btn-primary">
 </form>
 <form action="http://localhost:8080/actividad2_9_war_exploded/ListarClienteServlet">
+    <input id="usuario" type="text" name="usuario" value="<%= request.getParameter("usuario")%>" hidden>
+    <input id="password" type="password" name="password" value="<%= request.getParameter("password")%>" hidden>
     <input type="submit" value="Gestion de Clientes" class="btn btn-primary">
+</form>
+<form action="index.jsp">
+    <input type="submit" value="Salir" class="btn btn-primary">
 </form>
 <%
 } else {

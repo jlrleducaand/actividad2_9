@@ -6,14 +6,16 @@
 <html>
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="estilos.css" />
+    <link rel="stylesheet" type="text/css" href="estilos.css">
     <title>Clientes</title>
 </head>
 <body class="container">
 <h1 class="text-center">Gestibanko</h1>
 <table>
     <tr class="text-center"><th>Codigo</th><th>Nombre</th><th>Direccion</th><th>Telefono</th><th>Fecha de Nacimiento</th>
-    <th><form action="http://localhost:8080/actividad2_9_war_exploded/">
+    <th><form action="validation.jsp">
+        <input id="usuario" type="text" name="usuario" value="<%= request.getParameter("usuario")%>" hidden>
+        <input id="password" type="password" name="password" value="<%= request.getParameter("password")%>" hidden>
         <input type="submit" value="Salir" class="btn btn-primary ">
     </form></th></tr>
 

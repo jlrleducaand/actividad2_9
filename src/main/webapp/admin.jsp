@@ -31,6 +31,8 @@
             <input type="submit" value="Añadir Usuario" class="btn btn-primary">
         </form></th>
         <th class="text-center"><form action="validation.jsp">
+            <input id="usuario" type="text" name="usuario" value="<%= request.getParameter("usuario")%>" hidden>
+            <input id="password" type="password" name="password" value="<%= request.getParameter("password")%>" hidden>
             <input type="submit" value="Volver a Usuarios" class="btn btn-primary">
         </form></th>
     </tr>

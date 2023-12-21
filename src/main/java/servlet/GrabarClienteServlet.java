@@ -15,7 +15,7 @@ import java.util.Optional;
 
 @WebServlet(name = "GrabarClienteServlet", value = "/GrabarClienteServlet")
 public class GrabarClienteServlet extends HttpServlet {
-    private ClienteDAO clienteDAO = new ClienteDAOImpl();
+    private final ClienteDAO clienteDAO = new ClienteDAOImpl();
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
