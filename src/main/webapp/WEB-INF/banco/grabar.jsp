@@ -71,7 +71,7 @@
                 PreparedStatement ps = null;
                 try {
                     Class.forName("com.mysql.cj.jdbc.Driver");
-                    conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proyecto_jsp_jdbc", "mattialu", "");
+                    conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proyecto_jsp_jdbc", "root", "1234");
                     String sql = "INSERT INTO cliente VALUES ( " +
                             "?, " + //cliente_id
                             "?, " + //nombre_completo
